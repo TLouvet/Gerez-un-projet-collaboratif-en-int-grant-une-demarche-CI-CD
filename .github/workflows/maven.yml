@@ -32,3 +32,12 @@ jobs:
         cd back
         mvn -B package --file pom.xml
 
+    - name: Run tests and generate JaCoCo report
+        run: mvn -B clean test
+
+    - name: Upload coverage artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Tests Reports
+        path: back/target/site/jacoco
+
