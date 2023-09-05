@@ -18,10 +18,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
-         registy: bobapp-front
          context: ./front
          file: ./Dockerfile
          push: true
-         tags: latest
-         labels: front-latest
+         tags: darktomate/bobapp-front
 
