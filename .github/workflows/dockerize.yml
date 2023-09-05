@@ -18,7 +18,7 @@ jobs:
     - name: Build and push Backend Image
       uses: docker/build-push-action@v4
       with:
-         context: .
+         context: ./back
          file: ./back/Dockerfile
          push: true
          tags: darktomate/bobapp-back
