@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: front
     strategy:
       matrix:
         node-version: [16.x]
@@ -26,7 +29,13 @@ jobs:
         cache: 'npm'
         cache-dependency-path: '**/package-lock.json'
     - name: Installing Deps
-      working-directory: front
-      run: |
-        npm ci
-        npm run test:prod
+      run: npm ci
+        
+    - name: Running Tests and generating coverage 
+      run: npm run test:prod 
+
+    - name: Upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Tests Reports
+          path: front/coverage
