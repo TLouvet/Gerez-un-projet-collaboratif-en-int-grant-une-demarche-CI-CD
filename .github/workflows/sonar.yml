@@ -37,6 +37,7 @@ jobs:
       #Maybe build ?
 
       - name: Building Backend
+        working-directory: back
         run: mvn -B package --file pom.xml
 
       #Apply to front ?
