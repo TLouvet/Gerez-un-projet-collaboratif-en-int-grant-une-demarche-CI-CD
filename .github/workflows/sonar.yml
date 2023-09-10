@@ -46,7 +46,19 @@ jobs:
         run: mvn -B clean test
 
       #Apply to front ?
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
+      - name: Installing Frontend Deps
+        working-directory: front
+        run: npm ci
+
+      - name: Running Frontend Tests and generating coverage
+        run: npm run test:prod
       - name: Build and analyze
         uses: sonarsource/sonarcloud-github-action@master
         env:
