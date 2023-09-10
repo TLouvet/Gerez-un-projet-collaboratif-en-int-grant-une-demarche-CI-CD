@@ -13,12 +13,11 @@ jobs:
           fetch-depth: 0
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
-          with:
-            projectBaseDir: front
-            args: >
-              -Dsonar.projectKey=Tesdt
-              -Dsonar.sources=.
+        with:
+          projectBaseDir: front
+          args: >
+            -Dsonar.projectKey=Tesdt
+            -Dsonar.sources=.
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-    
