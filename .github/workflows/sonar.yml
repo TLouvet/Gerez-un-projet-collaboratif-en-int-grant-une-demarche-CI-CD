@@ -34,6 +34,10 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      #Maybe build ?
+
+      - name: Building Backend
+        run: mvn -B package --file pom.xml
 
       #Apply to front ?
 
