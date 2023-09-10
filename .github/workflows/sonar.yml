@@ -1,3 +1,5 @@
+name: SonarCloud
+
 on:
   pull_request:
     branches: ['main']
@@ -36,6 +38,7 @@ jobs:
       #Apply to front ?
 
       - name: Build and analyze
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
