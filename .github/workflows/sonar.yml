@@ -58,7 +58,9 @@ jobs:
         run: npm ci
 
       - name: Running Frontend Tests and generating coverage
+        working-directory: front
         run: npm run test:prod
+
       - name: Build and analyze
         uses: sonarsource/sonarcloud-github-action@master
         env:
