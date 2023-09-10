@@ -42,6 +42,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Run tests and generate JaCoCo report
+        working-directory: back
         run: mvn -B clean test
 
       #Apply to front ?
