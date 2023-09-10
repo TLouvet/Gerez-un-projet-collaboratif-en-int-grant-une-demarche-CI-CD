@@ -1,6 +1,8 @@
 name: SonarCloud
 
 on:
+  push:
+    branches: ['main']
   pull_request:
     branches: ['main']
     types: [opened, synchronize, reopened]
@@ -34,11 +36,13 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      #Maybe build ?
 
       - name: Building Backend
         working-directory: back
         run: mvn -B package --file pom.xml
+
+      - name: Run tests and generate JaCoCo report
+        run: mvn -B clean test
 
       #Apply to front ?
 
